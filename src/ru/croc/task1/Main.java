@@ -31,16 +31,22 @@ public class Main {
         System.out.print("Введите координату y вершины №3: ");
         c.y = scanner.nextDouble();
 
+        // Вычисление длин сторон
         double lengthAB = lengthCalculation(a, b);
         double lengthBC = lengthCalculation(b, c);
         double lengthAC = lengthCalculation(a, c);
-        double halfMeter = (lengthAB + lengthBC + lengthAC) / 2;
-        double square = Math.sqrt(halfMeter * (halfMeter - lengthAB) * (halfMeter - lengthBC) * (halfMeter - lengthAC));
+
+        // Вычисление полупериметра
+        double halfPerimeter = (lengthAB + lengthBC + lengthAC) / 2;
+
+        // Вычисление площади по формуле Герона
+        double square = Math.sqrt(halfPerimeter * (halfPerimeter - lengthAB) * (halfPerimeter - lengthBC) * (halfPerimeter - lengthAC));
 
         System.out.println("Площадь треугольника: " + String.format("%.1f", square));
 
     }
 
+    // Вычислекние длины стороны между точками a и b
     private static double lengthCalculation(Point a, Point b) {
 
         double length = Math.sqrt(Math.pow((a.x - b.x), 2) + Math.pow((a.y - b.y), 2));
