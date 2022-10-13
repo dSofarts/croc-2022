@@ -23,6 +23,9 @@ public class Main {
         }
 
         switch (unitTypeNumber) {
+            case 1:
+                unitType = " B";
+                break;
             case 2:
                 unitType = " KB";
                 break;
@@ -32,11 +35,14 @@ public class Main {
             case 4:
                 unitType = " GB";
                 break;
-            case 5:
+            default:
                 unitType = " TB";
                 break;
-            default:
-                unitType = " B";
+        }
+
+        // Проверка если получилось больше 1024 TB, не будет переводиться в большую удиницу измерения
+        if (unitTypeNumber > 5) {
+            numberByte *= (1024 * (unitTypeNumber - 5));
         }
 
         System.out.println(String.format("%.1f", numberByte) + unitType);
