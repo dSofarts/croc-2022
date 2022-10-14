@@ -14,38 +14,15 @@ public class Main {
 
     private static void printByte(double numberByte) {
 
-        int unitTypeNumber = 1;
-        String unitType;
+        int unitTypeNumber = 0;
+        String[] unitType = {" B", " KB", " MB", " GB", " TB"};
 
-        while (numberByte >= 1024) {
+        while (numberByte >= 1024 && unitTypeNumber < (unitType.length - 1)) {
             numberByte /= 1024;
             unitTypeNumber++;
         }
 
-        switch (unitTypeNumber) {
-            case 1:
-                unitType = " B";
-                break;
-            case 2:
-                unitType = " KB";
-                break;
-            case 3:
-                unitType = " MB";
-                break;
-            case 4:
-                unitType = " GB";
-                break;
-            default:
-                unitType = " TB";
-                break;
-        }
-
-        // Проверка если получилось больше 1024 TB, не будет переводиться в большую удиницу измерения
-        if (unitTypeNumber > 5) {
-            numberByte *= Math.pow(1024, (unitTypeNumber - 5));
-        }
-
-        System.out.println(String.format("%.1f", numberByte) + unitType);
+        System.out.println(String.format("%.1f", numberByte) + unitType[unitTypeNumber]);
 
     }
 }
