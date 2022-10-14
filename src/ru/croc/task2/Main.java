@@ -42,7 +42,7 @@ public class Main {
 
         // Проверка если получилось больше 1024 TB, не будет переводиться в большую удиницу измерения
         if (unitTypeNumber > 5) {
-            numberByte *= (1024 * (unitTypeNumber - 5));
+            numberByte *= Math.pow(1024, (unitTypeNumber - 5));
         }
 
         System.out.println(String.format("%.1f", numberByte) + unitType);
