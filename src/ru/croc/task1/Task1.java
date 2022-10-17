@@ -2,7 +2,7 @@ package ru.croc.task1;
 
 import java.util.Scanner;
 
-public class Main {
+public class Task1 {
 
     static class Point {
         double x;
