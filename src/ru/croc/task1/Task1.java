@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Task1 {
 
     static class Point {
+
         double x;
         double y;
     }
@@ -43,14 +44,11 @@ public class Task1 {
         double square = Math.sqrt(halfPerimeter * (halfPerimeter - lengthAB) * (halfPerimeter - lengthBC) * (halfPerimeter - lengthAC));
 
         System.out.println("Площадь треугольника: " + String.format("%.1f", square));
-
     }
 
     // Вычислекние длины стороны между точками a и b
     private static double lengthCalculation(Point a, Point b) {
 
-        double length = Math.sqrt(Math.pow((a.x - b.x), 2) + Math.pow((a.y - b.y), 2));
-        return length;
-
+        return Math.sqrt(Math.pow((a.x - b.x), 2) + Math.pow((a.y - b.y), 2));
     }
 }
