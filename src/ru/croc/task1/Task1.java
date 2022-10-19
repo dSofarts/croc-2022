@@ -41,7 +41,9 @@ public class Task1 {
         double halfPerimeter = (lengthAB + lengthBC + lengthAC) / 2;
 
         // Вычисление площади по формуле Герона
-        double square = Math.sqrt(halfPerimeter * (halfPerimeter - lengthAB) * (halfPerimeter - lengthBC) * (halfPerimeter - lengthAC));
+        double square = Math.sqrt(
+                halfPerimeter * (halfPerimeter - lengthAB) * (halfPerimeter - lengthBC) * (
+                        halfPerimeter - lengthAC));
 
         System.out.println("Площадь треугольника: " + String.format("%.1f", square));
     }

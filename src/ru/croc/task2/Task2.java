@@ -23,6 +23,5 @@ public class Task2 {
         }
 
         System.out.println(String.format("%.1f", numberByte) + unitType[unitTypeNumber]);
-
     }
 }
