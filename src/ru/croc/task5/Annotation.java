@@ -1,6 +1,6 @@
-package ru.croc.task4;
+package ru.croc.task5;
 
-import ru.croc.task4.figures.Figure;
+import ru.croc.task5.figures.Figure;
 
 public class Annotation {
 

@@ -1,8 +1,8 @@
-package ru.croc.task4;
+package ru.croc.task5;
 
-import ru.croc.task4.figures.*;
+import ru.croc.task5.figures.*;
 
-public class Task4 {
+public class Task5 {
 
     public static void main(String[] args) {
 
