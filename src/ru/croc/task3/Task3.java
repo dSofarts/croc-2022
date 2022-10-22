@@ -24,7 +24,7 @@ public class Task3 {
                 min = i;
             }
         }
-        changeArray(arrayInteger, 0, min);
+        rearrangeValuesInArray(arrayInteger, 0, min);
 
         // Находим и переставляем максимальное число в массиве
         for (int i = 0; i < arrayInteger.length; i++) {
@@ -32,7 +32,7 @@ public class Task3 {
                 max = i;
             }
         }
-        changeArray(arrayInteger, arrayInteger.length - 1, max);
+        rearrangeValuesInArray(arrayInteger, arrayInteger.length - 1, max);
 
         // Выводим получившийся массив
         for (int i : arrayInteger) {
@@ -40,9 +40,9 @@ public class Task3 {
         }
     }
 
-    public static void changeArray(int[] array, int first, int second) {
-        int temp = array[first];
-        array[first] = array[second];
-        array[second] = temp;
+    public static void rearrangeValuesInArray(int[] array, int firstValue, int secondValue) {
+        int temp = array[firstValue];
+        array[firstValue] = array[secondValue];
+        array[secondValue] = temp;
     }
 }
