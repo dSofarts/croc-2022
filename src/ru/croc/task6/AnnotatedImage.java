@@ -26,6 +26,12 @@ public class AnnotatedImage {
         return this.annotations;
     }
 
+    /**
+     * Поиск аннотации по точке
+     * @param x
+     * @param y
+     * @return
+     */
     public Annotation findByPoint(int x, int y) {
         for (Annotation annotation : annotations) {
             if (annotation.getFigure().findPointInFigure(x, y)) {
@@ -35,6 +41,11 @@ public class AnnotatedImage {
         return null;
     }
 
+    /**
+     * Поиск анотации по подписи
+     * @param label
+     * @return
+     */
     public Annotation findByLabel(String label) {
         for (Annotation annotation : annotations) {
             if (annotation.getSignature().contains(label)) {

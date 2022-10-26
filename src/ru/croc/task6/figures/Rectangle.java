@@ -29,17 +29,33 @@ public class Rectangle extends Figure {
 
     @Override
     public boolean findPointInFigure(int dx, int dy) {
-        return ((x1 == dx && y1 == dy) || (x2 == dx && y2 == dy));
+
+        int maxX, maxY, minX, minY;
+
+        if (x1 >= x2) {
+            maxX = x1;
+            minX = x2;
+        } else {
+            maxX = x2;
+            minX = x1;
+        }
+
+        if (y1 >= y2) {
+            maxY = y1;
+            minY = y2;
+        } else {
+            maxY = y2;
+            minY = y1;
+        }
+
+        return (dx >= minX && dx <= maxX && dy >= minY && dy <= maxY);
     }
 
     @Override
     public void move(int dx, int dy) {
-        if (x1 == dx && y1 == dy) {
-            x1 = dx;
-            y1 = dy;
-        } else {
-            x2 = dx;
-            y2 = dy;
-        }
+        x1 += dx;
+        x2 += dx;
+        y1 += dy;
+        y2 += dy;
     }
 }

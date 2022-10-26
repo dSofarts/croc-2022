@@ -8,5 +8,11 @@ public abstract class Figure implements Movable {
      */
     abstract public String getInformation();
 
+    /**
+     * Поиск точки в фигуре
+     * @param dx
+     * @param dy
+     * @return
+     */
     abstract public boolean findPointInFigure(int dx, int dy);
 }

@@ -9,7 +9,7 @@ public class Task6 {
     public static void main(String[] args) {
 
         Figure rectangle = new Rectangle(70, 70, 150, 200);
-        Figure circle = new Circle(80, 80, 10);
+        Figure circle = new Circle(50, 50, 10);
 
         Annotation annotation1 = new Annotation(circle, "Tree");
         Annotation annotation2 = new Annotation(rectangle, "Car");
@@ -18,8 +18,8 @@ public class Task6 {
 
         try {
 
-            annotatedImage.findByLabel("Tree").getFigure().move(50, 50);
-            annotatedImage.findByPoint(150, 200).getFigure().move(120, 140);
+            annotatedImage.findByPoint(100, 100).getFigure().move(120, 140);
+            annotatedImage.findByLabel("Tree").getFigure().move(-40, -45);
 
             for (Annotation annotation : annotatedImage.getAnnotations()) {
                 System.out.println(annotation.toString());
