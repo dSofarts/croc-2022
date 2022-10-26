@@ -3,7 +3,7 @@ package ru.croc.task6.figures;
 public interface Movable {
 
     /**
-     * Переместить точку в другую координату
+     * Сдвинуть фигуру в системе координат
      * @param dx
      * @param dy
      */
