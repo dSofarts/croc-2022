@@ -26,4 +26,8 @@ public class Annotation {
     public Figure getFigure() {
         return figure;
     }
+
+    public String getSignature() {
+        return signature;
+    }
 }

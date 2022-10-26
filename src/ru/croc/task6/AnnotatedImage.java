@@ -34,4 +34,13 @@ public class AnnotatedImage {
         }
         return null;
     }
+
+    public Annotation findByLabel(String label) {
+        for (Annotation annotation : annotations) {
+            if (annotation.getSignature().contains(label)) {
+                return annotation;
+            }
+        }
+        return null;
+    }
 }

@@ -1,4 +1,4 @@
-package ru.croc.task6;
+package ru.croc.task6.figures;
 
 public interface Movable {
 

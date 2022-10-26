@@ -1,6 +1,6 @@
 package ru.croc.task6.figures;
 
-public abstract class Figure {
+public abstract class Figure implements Movable {
 
     /**
      * Врзвращает информацию о вложенном объекте
