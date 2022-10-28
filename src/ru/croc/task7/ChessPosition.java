@@ -10,10 +10,7 @@ public class ChessPosition {
     private int positionY;
     private static String[] letterColumns = {"a", "b", "c", "d", "e", "f", "g", "h"};
 
-    public ChessPosition(int positionX, int positionY) throws IllegalPositionException {
-        if (positionX < 0 || positionX > 7 || positionY < 0 || positionY > 7) {
-            throw new IllegalPositionException();
-        }
+    private ChessPosition(int positionX, int positionY) {
         this.positionX = positionX;
         this.positionY = positionY;
     }
@@ -28,7 +25,7 @@ public class ChessPosition {
             int positionX = Integer.parseInt(positions[1]) - 1;
             return new ChessPosition(positionX, positionY);
         } catch (Exception exception) {
-            throw new IllegalPositionException();
+            throw new IllegalPositionException(position);
         }
     }
 
@@ -36,4 +33,13 @@ public class ChessPosition {
     public String toString() {
         return letterColumns[positionY] + (positionX + 1);
     }
+
+    public int getPositionX() {
+        return positionX;
+    }
+
+    public int getPositionY() {
+        return positionY;
+    }
+
 }
