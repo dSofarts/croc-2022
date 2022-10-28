@@ -29,6 +29,9 @@ public class ChessPosition {
             }
             int positionY = Arrays.asList(letterColumns).indexOf(positions[0]);
             int positionX = Integer.parseInt(positions[1]) - 1;
+            if (positionX < 0 || positionX > 7) {
+                throw new Exception();
+            }
             return new ChessPosition(positionX, positionY);
         } catch (Exception exception) {
             throw new IllegalPositionException(position);
