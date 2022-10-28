@@ -21,8 +21,11 @@ public class ChessPosition {
     public static ChessPosition parse(String position) throws IllegalPositionException {
         try {
             String[] positions = position.split("");
-            int positionX = Arrays.asList(letterColumns).indexOf(positions[0]);
-            int positionY = Integer.parseInt(positions[1]) - 1;
+            if (positions.length != 2) {
+                throw new Exception();
+            }
+            int positionY = Arrays.asList(letterColumns).indexOf(positions[0]);
+            int positionX = Integer.parseInt(positions[1]) - 1;
             return new ChessPosition(positionX, positionY);
         } catch (Exception exception) {
             throw new IllegalPositionException();
