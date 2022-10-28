@@ -1,5 +1,6 @@
 package ru.croc.task7;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import ru.croc.task7.exeptions.IllegalPositionException;
 
@@ -22,22 +23,13 @@ public class ChessPosition {
      */
     public static ChessPosition parse(String position) throws IllegalPositionException {
         try {
-
             String[] positions = position.split("");
             if (positions.length != 2) {
                 throw new Exception();
             }
-
-            // перевод позиций в систему координат
             int positionY = Arrays.asList(letterColumns).indexOf(positions[0]);
             int positionX = Integer.parseInt(positions[1]) - 1;
-
-            if (positionX < 0 || positionX > 7) {
-                throw new Exception();
-            }
-
             return new ChessPosition(positionX, positionY);
-
         } catch (Exception exception) {
             throw new IllegalPositionException(position);
         }

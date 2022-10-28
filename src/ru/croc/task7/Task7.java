@@ -12,7 +12,7 @@ public class Task7 {
         ChessPosition[] positions = new ChessPosition[customPositions.length];
         try {
 
-            // Создаем позиции
+            // Создаем позиции на доске
             for (int i = 0; i < customPositions.length; i++) {
                 positions[i] = ChessPosition.parse(customPositions[i]);
             }
