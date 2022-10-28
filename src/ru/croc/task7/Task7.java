@@ -12,9 +12,11 @@ public class Task7 {
         String[] customPositions = scanner.nextLine().split(" ");
         ChessPosition[] positions = new ChessPosition[customPositions.length];
         try {
+            // Создаем позиции
             for (int i = 0; i < customPositions.length; i++) {
                 positions[i] = ChessPosition.parse(customPositions[i]);
             }
+            // Проверяем можели ли так двигаться ход
             for (int j = 0; j < positions.length - 1; j++) {
                 move(positions[j], positions[j + 1]);
             }
@@ -25,11 +27,17 @@ public class Task7 {
 
     }
 
+    /**
+     * Движение коня
+     * @param chessPositionOut
+     * @param chessPositionIn
+     * @throws IllegalMoveException
+     */
     public static void move(ChessPosition chessPositionOut, ChessPosition chessPositionIn) throws IllegalMoveException {
         int dy = chessPositionIn.getPositionY() - chessPositionOut.getPositionY();
         int dx = chessPositionIn.getPositionX() - chessPositionOut.getPositionX();
         if (Math.pow(dy, 2) + Math.pow(dx, 2) != 5) {
-            throw new IllegalMoveException(chessPositionOut.toString(), chessPositionIn.toString());
+            throw new IllegalMoveException(chessPositionOut, chessPositionIn);
         }
     }
 

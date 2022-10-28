@@ -15,6 +15,12 @@ public class ChessPosition {
         this.positionY = positionY;
     }
 
+    /**
+     * Создание позиции на доске
+     * @param position
+     * @return
+     * @throws IllegalPositionException
+     */
     public static ChessPosition parse(String position) throws IllegalPositionException {
         try {
             String[] positions = position.split("");
