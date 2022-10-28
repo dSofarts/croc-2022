@@ -10,7 +10,7 @@ public class IllegalPositionException extends Exception {
 
     @Override
     public String getMessage() {
-        return "Incorrect position value: " + "\"" + position + "\"";
+        return "Некорректная позиция : " + "\"" + position + "\"";
     }
 
 }
