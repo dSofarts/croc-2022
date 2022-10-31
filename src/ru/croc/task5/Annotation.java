@@ -9,8 +9,6 @@ public class Annotation {
 
     /**
      * Конструктор разменти
-     * @param figure
-     * @param signature
      */
     public Annotation(Figure figure, String signature) {
         this.signature = signature;

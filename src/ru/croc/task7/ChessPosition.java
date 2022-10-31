@@ -16,9 +16,6 @@ public class ChessPosition {
 
     /**
      * Создание позиции на доске
-     * @param position
-     * @return
-     * @throws IllegalPositionException
      */
     public static ChessPosition parse(String position) throws IllegalPositionException {
 

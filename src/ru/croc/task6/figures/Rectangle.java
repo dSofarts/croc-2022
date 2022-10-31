@@ -10,10 +10,6 @@ public class Rectangle extends Figure {
 
     /**
      * Конструктор прямоугольника
-     * @param x1
-     * @param y1
-     * @param x2
-     * @param y2
      */
     public Rectangle(int x1, int y1, int x2, int y2) {
         this.x1 = x1;

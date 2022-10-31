@@ -12,7 +12,6 @@ public class AnnotatedImage {
 
     /**
      * Возвращаем путь к изображению
-     * @return
      */
     public String getImagePath() {
         return this.imagePath;
@@ -20,7 +19,6 @@ public class AnnotatedImage {
 
     /**
      * Возвращение массива разметок
-     * @return
      */
     public Annotation[] getAnnotations() {
         return this.annotations;
@@ -28,9 +26,6 @@ public class AnnotatedImage {
 
     /**
      * Поиск аннотации по точке
-     * @param x
-     * @param y
-     * @return
      */
     public Annotation findByPoint(int x, int y) {
         for (Annotation annotation : annotations) {
@@ -43,8 +38,6 @@ public class AnnotatedImage {
 
     /**
      * Поиск анотации по подписи
-     * @param label
-     * @return
      */
     public Annotation findByLabel(String label) {
         for (Annotation annotation : annotations) {

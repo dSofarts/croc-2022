@@ -35,9 +35,6 @@ public class Task7 {
 
     /**
      * Движение коня
-     * @param chessPositionOut
-     * @param chessPositionIn
-     * @throws IllegalMoveException
      */
     public static void move(ChessPosition chessPositionOut, ChessPosition chessPositionIn) throws IllegalMoveException {
 

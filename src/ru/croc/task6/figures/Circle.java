@@ -8,9 +8,6 @@ public class Circle extends Figure {
 
     /**
      * Конструктор окружностей
-     * @param x1
-     * @param y1
-     * @param radius
      */
     public Circle(int x1, int y1, int radius) {
         this.x1 = x1;

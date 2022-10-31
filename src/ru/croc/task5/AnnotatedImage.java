@@ -12,7 +12,6 @@ public class AnnotatedImage {
 
     /**
      * Возвращаем путь к изображению
-     * @return
      */
     public String getImagePath() {
         return this.imagePath;
@@ -20,7 +19,6 @@ public class AnnotatedImage {
 
     /**
      * Возвращение массива разметок
-     * @return
      */
     public Annotation[] getAnnotations() {
         return this.annotations;
