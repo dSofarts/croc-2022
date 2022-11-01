@@ -19,13 +19,17 @@ public class Task7 {
                 positions[i] = ChessPosition.parse(customPositions[i]);
             }
 
-            // Проверяем может ли так двигаться конь (Если не может появится исключение)
-            for (int j = 0; j < positions.length - 1; j++) {
-                move(positions[j], positions[j + 1]);
-            }
+            if (positions.length > 1) {
+                // Проверяем может ли так двигаться конь (Если не может появится исключение)
+                for (int j = 0; j < positions.length - 1; j++) {
+                    move(positions[j], positions[j + 1]);
+                }
 
-            // Если не возникло ошибок, значит движение возможно
-            System.out.println("OK");
+                // Если не возникло ошибок, значит движение возможно
+                System.out.println("OK");
+            } else {
+                System.out.println("Вы уже на месте!");
+            }
 
         } catch (IllegalPositionException | IllegalMoveException e) {
             System.err.println(e.getMessage());
