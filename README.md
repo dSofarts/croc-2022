@@ -1,6 +1,6 @@
-# croc-2022 🐊
-### Дронов Егор
-### https://t.me/psvmger/
+# CROC 2022 🐊
+### Dronov Egor
+### Telegram: [https://t.me/psvmger/](https://t.me/psvmger/)
 
-## О репозитории
-В данном репозитории выкладывается домашнее задание во время обучения Java в КРОК
+## About the repository
+In this repository, homework is laid out during Java training at CROC
