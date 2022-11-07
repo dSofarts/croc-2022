@@ -5,7 +5,10 @@ Telegram: [https://t.me/psvmger/](https://t.me/psvmger/)
 ## About the repository
 In this repository, homework is laid out during Java training at CROC incorporated
 
-<div id="badges" align="left">
+---
+
+If you have any questions, please contact by email: [DronovEgorVl@yandex.com](mailto:DronovEgorVl@yandex.com)
+<div id="badges">
   <a href="https://github.com/dSofarts">
     <img src="https://img.shields.io/badge/dSofarts-161b22?style=for-the-badge&logo=github&logoColor=white" alt="github Badge"/>
   </a>
