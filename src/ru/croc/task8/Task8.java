@@ -7,7 +7,6 @@ public class Task8 {
 
     public static void main(String[] args) throws IOException {
 
-        StringBuilder stringBuilder = new StringBuilder();
         String path;
 
         // Проверка на пустое значение args[0], согда задаем путь по умолчанию
@@ -17,7 +16,17 @@ public class Task8 {
             path = "/croc-2022/src/ru/croc/task8/text.txt";
         }
 
-        // Читаем файл
+        System.out.println(countNumberOfWordsInFile(path));
+
+    }
+
+    /**
+     * Подсчет колличество слов в файле
+     * @param path путь к файлу
+     * @return колличество слов в файле
+     */
+    public static int countNumberOfWordsInFile(String path) throws IOException {
+        StringBuilder stringBuilder = new StringBuilder();
         try (Reader r = new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8)) {
 
             // Читаем символы в файле
@@ -27,8 +36,11 @@ public class Task8 {
             }
 
             // Разделяем строку на слова
-            String[] str = stringBuilder.toString().trim().split(" +|\n|\n +");
-            System.out.println(str.length);
+            String[] str = stringBuilder.toString().trim().split("\\s+");
+            if (str.length == 1 && str[0].equals("")) {
+                return 0;
+            }
+            return str.length;
         }
     }
 }
