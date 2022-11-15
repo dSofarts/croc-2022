@@ -24,7 +24,7 @@ public class Task9 {
     public static String normalizePath(Path path) throws IncorrectPathException {
 
         // Проверяем на корректность заданого пути
-        if (path.startsWith("/") || path.endsWith("/")) {
+        if (path.startsWith("/") || path.endsWith("/") || path.toString().contains("\\")) {
             throw new IncorrectPathException(path);
         }
 
