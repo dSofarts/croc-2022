@@ -1,17 +1,18 @@
 package ru.croc.task9.exeptions;
 
 import java.io.IOException;
+import java.nio.file.Path;
 
 public class IncorrectPathException extends IOException {
 
-    private String path;
+    private Path path;
 
-    public IncorrectPathException(String path) {
+    public IncorrectPathException(Path path) {
         this.path = path;
     }
 
     @Override
     public String getMessage() {
-        return "Incorrect path: " + path;
+        return "Incorrect path: " + path.toString();
     }
 }
