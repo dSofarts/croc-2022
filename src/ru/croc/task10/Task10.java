@@ -4,11 +4,13 @@ public class Task10 {
 
     public static void main(String[] args) {
 
-        String hashOldPassword = "40682260CC011947FC2D0B1A927138C5";
+        int numberOfThreads = 5;
 
-
-        PasswordCracker passwordCracker = new PasswordCracker(hashOldPassword);
-        passwordCracker.run();
+        Thread[] threads = new Thread[numberOfThreads];
+        for (int i = 0; i < numberOfThreads; i++) {
+            threads[i] = new Thread(new PasswordCracker(i, numberOfThreads, 7));
+            threads[i].start();
+        }
 
     }
 }

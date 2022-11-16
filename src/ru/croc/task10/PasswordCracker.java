@@ -5,46 +5,49 @@ import java.security.NoSuchAlgorithmException;
 
 public class PasswordCracker implements Runnable {
 
-    private String initialHash;
-    private final char[] ALPHABET = "abcdefghijklmnopqrstuvwxyz".toCharArray();
     private static final char[] HEX_DIGITS = "0123456789ABCDEF".toCharArray();
+    private static final String HASH_PASS = "40682260CC011947FC2D0B1A927138C5";
 
-    public PasswordCracker(String initialHash) {
-        this.initialHash = initialHash;
+    private final int passLength;
+    private long begin;
+    private long end;
+    private static volatile boolean passFounded = false;
+
+    public PasswordCracker(int threadNumber, int numberOfThreads, int passLength) {
+        this.passLength = passLength;
+
+        long numberOfOptions = (long) Math.pow(26, passLength);
+        begin = (numberOfOptions * threadNumber) / numberOfThreads;
+        end = (numberOfOptions * (threadNumber + 1)) / numberOfThreads - 1;
+    }
+
+    private StringBuilder generatePass(long n) {
+        int[] passASCII = new int[passLength];
+        for (int i = 0; i < passLength; i++) {
+            passASCII[i] = (int) (n % 26) + 'a';
+            n /= passLength;
+        }
+
+        StringBuilder password = new StringBuilder();
+        for (int i = 0; i < passLength; i++) {
+            password.append((char) (passASCII[i]));
+        }
+
+        return password;
     }
 
     @Override
     public void run() {
-        System.out.println(searchPassword());
-    }
-
-    private String searchPassword() {
-        String password = "";
-        for (char a : ALPHABET) {
-            for (char b : ALPHABET) {
-                for (char c : ALPHABET) {
-                    for (char d : ALPHABET) {
-                        password += d;
-                        for (char e : ALPHABET) {
-                            password += e;
-                            for (char f : ALPHABET) {
-                                password += f;
-                                for (char g : ALPHABET) {
-                                    password = Character.toString(a) + Character.toString(b) +
-                                            Character.toString(c) + Character.toString(d) +
-                                            Character.toString(e) + Character.toString(f) +
-                                            Character.toString(g);
-                                    if (initialHash.equals(hashPassword(password))) {
-                                        return password;
-                                    }
-                                }
-                            }
-                        }
-                    }
+        while (!passFounded) {
+            for (long i = begin; i < end; i++) {
+                String password = generatePass(i).toString();
+                if (hashPassword(password).equals(HASH_PASS)) {
+                    System.out.println("Пароль: " + password);
+                    passFounded = true;
+                    break;
                 }
             }
         }
-        return "Пароль не найден";
     }
 
     private static String toHexString(byte[] bytes) {
