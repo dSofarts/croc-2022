@@ -18,7 +18,11 @@ public class PasswordCracker implements Callable<String> {
         this.end = end;
     }
 
-
+    /**
+     * Перевести число в 26-ричную систему исчесления (только из букв)
+     * @param i число
+     * @return число в 26-ричной системе исчесления
+     */
     private String toAlphabetic(long i) {
         long quot = i / 26;
         long rem = i % 26;
@@ -36,6 +40,7 @@ public class PasswordCracker implements Callable<String> {
 
             String password = toAlphabetic(i - 1).toLowerCase();
 
+            // дополнить пароль до 7 символов при необходимости
             while (password.length() < 7) {
                 password = "a" + password;
             }

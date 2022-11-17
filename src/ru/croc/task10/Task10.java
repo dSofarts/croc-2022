@@ -13,6 +13,12 @@ public class Task10 {
         System.out.println(calculatePassword(8, PasswordCracker.hashPassword("40682260CC011947FC2D0B1A927138C5")));
     }
 
+    /**
+     * Найти пароль
+     * @param numberOfThreads колличество потоков
+     * @param initialHash хеш пароля
+     * @return пароль
+     */
     public static String calculatePassword(int numberOfThreads, String initialHash)
             throws ExecutionException, InterruptedException {
 
@@ -37,6 +43,11 @@ public class Task10 {
         return password;
     }
 
+    /**
+     * Найти максимальное колличество комбинаций пароля
+     * @param length длина пароля
+     * @return максимальное колличество комбинаций пароля
+     */
     public static long max(int length) {
         long max = 0;
         long radixPower = 1;
