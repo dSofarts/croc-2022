@@ -27,6 +27,7 @@ public class Task10 {
         long max = max(7) - 1;
         long stepThread = max / numberOfThreads;
 
+        // Запуск потоков
         for (int i = 0; i < numberOfThreads; i++) {
             futures.add(pool.submit(new PasswordCracker((stepThread * i) + 1, (stepThread * (i + 1)), initialHash)));
         }

@@ -20,12 +20,12 @@ public class PasswordCracker implements Callable<String> {
 
     /**
      * Перевести число в 26-ричную систему исчесления (только из букв)
-     * @param i число
+     * @param number число
      * @return число в 26-ричной системе исчесления
      */
-    private String toAlphabetic(long i) {
-        long quot = i / 26;
-        long rem = i % 26;
+    private String toAlphabetic(long number) {
+        long quot = number / 26;
+        long rem = number % 26;
         char letter = (char) ((int) 'A' + rem);
         if (quot == 0) {
             return "" + letter;
