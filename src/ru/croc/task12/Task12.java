@@ -1,6 +1,6 @@
-package ru.croc.task13;
+package ru.croc.task12;
 
-public class Task13 {
+public class Task12 {
 
     public static void main(String[] args) {
 
