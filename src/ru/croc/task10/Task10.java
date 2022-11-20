@@ -10,7 +10,7 @@ import java.util.concurrent.Future;
 public class Task10 {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        System.out.println(calculatePassword(8, PasswordCracker.hashPassword("40682260CC011947FC2D0B1A927138C5")));
+        System.out.println(calculatePassword(8, "C73BD86FC732B6E883FE9612F9BC5383"));
     }
 
     /**
@@ -23,7 +23,7 @@ public class Task10 {
             throws ExecutionException, InterruptedException {
 
         ExecutorService pool = Executors.newFixedThreadPool(numberOfThreads);
-        List<Future<String>> futures = new ArrayList<Future<String>>(numberOfThreads);
+        List<Future<String>> futures = new ArrayList<>(numberOfThreads);
         long max = max(7) - 1;
         long stepThread = max / numberOfThreads;
 
@@ -36,6 +36,7 @@ public class Task10 {
         for (Future<String> future : futures) {
             String futureResponse = future.get();
             if (!futureResponse.equals("")) {
+                pool.shutdownNow();
                 password = futureResponse;
                 break;
             }

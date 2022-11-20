@@ -11,6 +11,7 @@ public class PasswordCracker implements Callable<String> {
     private String initialHash;
     private long begin;
     private long end;
+    private static volatile boolean passwordFound = false;
 
     public PasswordCracker(long begin, long end, String initialHash) {
         this.initialHash = initialHash;
@@ -26,7 +27,7 @@ public class PasswordCracker implements Callable<String> {
     private String toAlphabetic(long number) {
         long quot = number / 26;
         long rem = number % 26;
-        char letter = (char) ((int) 'A' + rem);
+        char letter = (char) ((int) 'a' + rem);
         if (quot == 0) {
             return "" + letter;
         } else {
@@ -36,9 +37,9 @@ public class PasswordCracker implements Callable<String> {
 
     @Override
     public String call() {
-        for (long i = begin; i <= end; i++) {
+        for (long i = begin; i <= end && !passwordFound; i++) {
 
-            String password = toAlphabetic(i - 1).toLowerCase();
+            String password = toAlphabetic(i - 1);
 
             // дополнить пароль до 7 символов при необходимости
             while (password.length() < 7) {
@@ -46,6 +47,7 @@ public class PasswordCracker implements Callable<String> {
             }
 
             if (hashPassword(password).equals(initialHash)) {
+                passwordFound = true;
                 return password;
             }
         }
