@@ -41,6 +41,7 @@ public class CommentBlock implements BlackListFilter {
             for (String blacklistedWord : blackList) {
                 if (comments.get(commentIndex).toLowerCase().contains(blacklistedWord)) {
                     comments.remove(commentIndex);
+                    commentIndex--;
                 }
             }
         }
