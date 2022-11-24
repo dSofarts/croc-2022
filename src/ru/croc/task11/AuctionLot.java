@@ -4,20 +4,18 @@ import java.time.LocalDateTime;
 
 public class AuctionLot {
 
-    private static final Object LOCK = new Object();
-
     private volatile int nowPrice;
     private volatile Buyer buyer;
-    private final LocalDateTime END_OF_BIDDING;
+    private final LocalDateTime endOfBidding;
 
     public AuctionLot(int nowPrice, LocalDateTime endOfBidding) {
         this.nowPrice = nowPrice;
-        this.END_OF_BIDDING = endOfBidding;
+        this.endOfBidding = endOfBidding;
     }
 
     public void placeBet(int nowPrice, Buyer buyer) {
-        synchronized (LOCK) {
-            if (nowPrice > this.nowPrice && END_OF_BIDDING.isAfter(LocalDateTime.now())) {
+        synchronized (endOfBidding) {
+            if (nowPrice > this.nowPrice && endOfBidding.isAfter(LocalDateTime.now())) {
                 this.nowPrice = nowPrice;
                 this.buyer = buyer;
             } else {
@@ -27,8 +25,11 @@ public class AuctionLot {
     }
 
     public String getBuyerName() {
-        if (LocalDateTime.now().isAfter(END_OF_BIDDING) && buyer != null) {
-            return buyer.getName();
+        if (LocalDateTime.now().isAfter(endOfBidding)) {
+            if (buyer != null) {
+                return buyer.getName();
+            }
+            return "Покупателя нет :(";
         }
         return "Торги еще идут!";
     }
