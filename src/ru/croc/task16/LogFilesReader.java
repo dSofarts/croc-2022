@@ -15,7 +15,12 @@ public class LogFilesReader {
 
     private static List<Log> logs = new ArrayList<>();
 
-    public static void readFilesInFolder(Path path) throws IOException {
+    /**
+     * Прочитать логи в папке
+     * @param path путь к папке
+     * @return List с логами
+     */
+    public static List<Log> readLogsInFolder(Path path) throws IOException {
         List<File> filesInFolder = Files.walk(path).filter(Files::isRegularFile)
                 .filter(file -> file.getFileName().toString().endsWith(".log") || file.getFileName()
                         .toString().endsWith(".trace")).map(Path::toFile).toList();
@@ -23,8 +28,14 @@ public class LogFilesReader {
         for (File file : filesInFolder) {
             readFile(file);
         }
+
+        return logs;
     }
 
+    /**
+     * Прочитать логи в файле
+     * @param file файл
+     */
     private static void readFile(File file) throws IOException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8))) {
             String logLine;
@@ -32,10 +43,6 @@ public class LogFilesReader {
                 logs.add(new Log(Long.parseLong(logLine.split(" ")[0]), logLine));
             }
         }
-    }
-
-    public static List<Log> getLogs() {
-        return logs;
     }
 
 }

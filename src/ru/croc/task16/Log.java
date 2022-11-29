@@ -10,10 +10,18 @@ public class Log {
         this.log = log;
     }
 
+    /**
+     * Получить время лога
+     * @return время лога
+     */
     public long getTime() {
         return time;
     }
 
+    /**
+     * Получить весь лог
+     * @return лог
+     */
     public String getLog() {
         return log;
     }
