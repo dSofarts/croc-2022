@@ -37,7 +37,8 @@ public class LogFilesReader {
      * @param file файл
      */
     private static void readFile(File file) throws IOException {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8))) {
+        try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8))) {
             String logLine;
             while ((logLine = reader.readLine()) != null) {
                 logs.add(new Log(Long.parseLong(logLine.split(" ")[0]), logLine));
