@@ -2,7 +2,6 @@ package ru.croc.task16;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,7 +16,7 @@ public class Task16 {
 
         // Создаем коллекцию с объединенными логами и сортируем ее
         List<Log> logs = LogFilesReader.readLogsInFolder(path);
-        Collections.sort(logs, new LogComparator());
+        logs.sort(new LogComparator());
 
         // Выводим логи
         for (Log log : logs) {

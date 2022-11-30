@@ -12,8 +12,6 @@ public class Task14 {
 
         commentBlock.addBlacklistedWord("рак");
 
-        for (String comment : commentBlock.getFilteredComments()) {
-            System.out.println(comment);
-        }
+        commentBlock.getFilteredComments().forEach(System.out::println);
     }
 }
