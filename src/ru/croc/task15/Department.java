@@ -1,10 +1,15 @@
 package ru.croc.task15;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Department {
 
     private String name;
     private Department parent = null;
     private int applicationProcessingTime;
+
+    private Set<Department> daughters;
 
     public Department(String name, Department parent, int applicationProcessingTime) {
         this.name = name;
@@ -12,6 +17,7 @@ public class Department {
         if (parent != null) {
             this.parent = parent;
         }
+        daughters = new HashSet<>();
     }
 
     /**
@@ -36,5 +42,17 @@ public class Department {
      */
     public int getApplicationProcessingTime() {
         return applicationProcessingTime;
+    }
+
+    public void addDaughter(Department department) {
+        daughters.add(department);
+    }
+
+    public boolean haveDaughter() {
+        return !daughters.isEmpty();
+    }
+
+    public Set<Department> getDaughters() {
+        return daughters;
     }
 }
