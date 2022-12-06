@@ -19,7 +19,7 @@ public class Task17 {
         Driver driver = new org.h2.Driver();
         try (Connection connection = DriverManager.getConnection(DATABASE, USER, PASSWORD)){
             createTables(connection);
-            initializationTable(args[0], connection);
+            initializationTable("/Users/dsofarts/IdeaProjects/croc-2022/src/ru/croc/task17/table.csv", connection);
         } catch (SQLException | IOException exception) {
             exception.printStackTrace();
         }
@@ -31,7 +31,7 @@ public class Task17 {
      */
     public static void createTables(Connection connection) throws SQLException {
         try (Statement statement = connection.createStatement()){
-            String SQL = "CREATE TABLE \"ORDER\"(NUMBER INT, LOGIN VARCHAR(255), ARTICLE VARCHAR(255));\nCREATE TABLE \"ITEM\"(ARTICLE VARCHAR(255) PRIMARY KEY, NAME VARCHAR(255), PRICE INTEGER);".formatted();
+            String SQL = "CREATE TABLE \"ORDER\"(NUMBER INT, LOGIN VARCHAR(255), ARTICLE VARCHAR(255));\nCREATE TABLE \"PRODUCT\"(ARTICLE VARCHAR(255) PRIMARY KEY, NAME VARCHAR(255), PRICE INTEGER);".formatted();
             statement.execute(SQL);
         }
     }
@@ -59,7 +59,7 @@ public class Task17 {
      * @return наличие артикула
      */
     public static boolean haveArticle(Connection connection, String article) throws SQLException {
-        String SQL = "SELECT * FROM ITEM WHERE ARTICLE = %s;".formatted(article);
+        String SQL = "SELECT * FROM PRODUCT WHERE ARTICLE = %s;".formatted(article);
         try (Statement statement = connection.createStatement()){
             try (ResultSet result = statement.executeQuery(SQL)) {
                 return result.next();
@@ -79,7 +79,7 @@ public class Task17 {
             String[] cells = line.split(",");
             update(connection, "\"ORDER\"", " (NUMBER, LOGIN, ARTICLE)", cells[0], "'" + cells[1] + "'","'" +  cells[2] + "'");
             if(!haveArticle(connection, "'" + cells[2] + "'")) {
-                update(connection, "ITEM",  " (ARTICLE, NAME, PRICE)", "'" + cells[2] + "'","'" +  cells[3] + "'", cells[4]);
+                update(connection, "PRODUCT",  " (ARTICLE, NAME, PRICE)", "'" + cells[2] + "'","'" +  cells[3] + "'", cells[4]);
             }
             line = reader.readLine();
         }
