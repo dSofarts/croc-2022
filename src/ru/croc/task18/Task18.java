@@ -1,6 +1,5 @@
 package ru.croc.task18;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -15,7 +14,7 @@ public class Task18 {
     static final String USER = "sa";
     static final String PASSWORD = "sa";
 
-    public static void main(String[] args) throws ClassNotFoundException {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
         List<Product> products = new ArrayList<>();
         products.add(new Product("T1", "Монитор", 500));
@@ -23,13 +22,11 @@ public class Task18 {
 
         Class.forName(DRIVER);
         Driver driver = new org.h2.Driver();
-        try (Connection connection = DriverManager.getConnection(DATABASE, USER, PASSWORD)){
-            Dao dao = new Dao();
+        try (Connection connection = DriverManager.getConnection(DATABASE, USER, PASSWORD)) {
+            DaoProduct dao = new DaoProduct();
             dao.setConnection(connection);
-            dao.createOrder("Egor", products);
+            System.out.println(dao.findProduct("Egor"));
             dao.closeConnections();
-        } catch (SQLException exception) {
-            exception.printStackTrace();
         }
 
     }
